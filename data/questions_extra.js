@@ -1,0 +1,74 @@
+/* ===== EXTRA QUESTIONS for thinner lessons ===== */
+// c16 diagrams & symbols
+MC('c16',1,'In a schematic, a zig-zag line (or a rectangle) represents a:',['capacitor','resistor','inductor','diode'],1,'The zig-zag (US) or rectangle (IEC) is the resistor symbol.');
+MC('c16',1,'Two parallel plates drawn as two short parallel lines is the symbol for a:',['battery','capacitor','switch','ground'],1,'Two parallel lines = capacitor (a curved plate marks a polarised electrolytic). A battery is a long line (+) and short line (−).');
+MC('c16',2,'On a schematic, two wires cross with a filled dot at the crossing. This means:',['the wires are not connected','the wires are electrically connected (a junction)','a fuse','a voltage source'],1,'A dot marks a junction; wires that cross without a dot are not connected.');
+MC('c16',2,'In a battery symbol, the LONGER line represents the:',['negative terminal','positive terminal','ground','neutral'],1,'Long line = positive, short line = negative.');
+MC('c16',2,'The triangle-with-a-bar diode symbol conducts current in which direction?',['Against the triangle (bar → triangle)','From the triangle side (anode) toward the bar (cathode)','Both directions','Neither'],1,'Conventional current flows from the anode (triangle base) to the cathode (bar): it points the way the triangle points.');
+MC('c16',2,'The symbol of three descending horizontal lines of decreasing length is:',['an antenna','earth/chassis ground','a capacitor','a lamp'],1,'That stack of shortening lines is the ground symbol (earth ground).');
+TF('c16',1,'A schematic shows physical component placement exactly as it sits on the board.',false,'A schematic shows electrical connections only; a layout/pictorial diagram shows physical placement.');
+MC('c16',3,'A circle with an X inside is the schematic symbol for a:',['motor','lamp (bulb)','voltmeter','generator'],1,'A circle with an X is a lamp. Meters are circles with V, A or Ω inside; a motor has an M; a generator has a G.');
+// c23 meters, uncertainty
+MC('c23',2,'An ideal voltmeter has:',['zero resistance','infinite resistance','resistance equal to the load','resistance of 1 kΩ'],1,'An ideal voltmeter draws no current — infinite internal resistance. An ideal ammeter has zero resistance.');
+MC('c23',2,'Measuring voltage across a 1 MΩ resistor in a divider with a 10 MΩ meter will read:',['exactly the true voltage','lower than the true voltage (loading)','higher than the true voltage','zero'],1,'The meter’s 10 MΩ in parallel lowers the effective resistance, so the measured voltage drops (loading error).');
+NUM('c23',3,'A 10 MΩ meter is placed across the 1 MΩ lower resistor of a divider made of two 1 MΩ resistors across 10 V (true V = 5.00 V). What does the meter read (V)?',4.76,'V','1 MΩ‖10 MΩ = 0.909 MΩ; V = 10×0.909/(1+0.909) = 4.76 V.',{tol:0.01,f:1});
+MC('c23',1,'A reading of 12.3 V is written with how many significant figures?',['2','3','4','1'],1,'Digits 1, 2, 3 are significant → 3 s.f.');
+MC('c23',2,'A digital meter’s last digit flickers between 4.81 and 4.83 V. A good record is:',['4.81 V','4.82 ± 0.01 V','4.8213 V','4 V'],1,'Report the middle value with an uncertainty that reflects the fluctuation.');
+TF('c23',2,'Systematic errors can be reduced by averaging many repeated measurements.',false,'Averaging reduces random error; systematic errors (miscalibration, loading) stay and must be corrected by calibration.');
+MC('c23',3,'A sensor reads 0.0 at true 0 and 9.0 at true 10.0 (linear). The calibration gain to correct readings is:',['0.9','1.11','10','0.09'],1,'True = reading × (10/9) = 1.11 × reading.');
+// c24 inductors
+MC('c24',1,'An inductor stores energy in its:',['electric field','magnetic field','gravitational field','chemical bonds'],1,'Inductors store ½LI² in a magnetic field.');
+MC('c24',2,'In a DC steady state (after the transients) an ideal inductor behaves like a:',['open circuit','short circuit (wire)','capacitor','battery'],1,'Steady current ⇒ no change in flux ⇒ no voltage drop: a wire. A capacitor is the open circuit at DC.');
+MC('c24',2,'The time constant of a series RL circuit is:',['RL','L/R','R/L','1/(LR)'],1,'τ = L/R (seconds) — current reaches 63 % of its final value after one τ.');
+NUM('c24',2,'Energy stored in a 0.50 H inductor carrying 2.0 A (J)?',1.0,'J','E = ½LI² = 0.5×0.5×4 = 1.0 J.');
+MC('c24',2,'Why can opening a switch in series with an energised inductor produce a big spark?',['The inductor resists a change in current, so a large emf appears (V = L dI/dt)','the battery gets hotter','resistance becomes zero','capacitance increases'],0,'V = L·dI/dt: a fast current cut creates a huge voltage — hence flyback diodes across relay coils.');
+TF('c24',2,'Inductance calculations are not required in the 2026 Circuit Lab rules, but concepts are still fair game.',true,'The manual lists inductance as excluded for calculations (concepts only).');
+// c25 troubleshooting
+MC('c25',1,'A series LED circuit: the LED is dark, the battery measures 9 V, and there is 9 V across the LED. The most likely fault is:',['the resistor is shorted','the LED is open (burned out) or backwards','the battery is dead','the wire is too long'],1,'Full supply across the LED with no current means the path is open at the LED (or it’s reversed).');
+MC('c25',2,'Zero volts across a resistor in a series circuit that has no current flowing suggests:',['a short across the resistor','an open elsewhere in the loop (no current)','the resistor is too large','an AC source'],1,'V = IR: if I = 0 then V = 0 across every resistor; the open break itself shows the full source voltage.');
+MC('c25',2,'To test for a broken wire, the safest first step is:',['measure continuity with the power OFF','short the two ends with your finger','connect 120 V','measure current across it'],0,'Continuity tests need power off.');
+MC('c25',2,'A circuit draws much more current than calculated and the battery gets hot. Likely cause:',['an open circuit','a short circuit','a high-value resistor','a weak magnet'],1,'A low-resistance unintended path draws excess current.');
+MC('c25',3,'On a breadboard, two resistors in the same column strip (same half, e.g., both in a–e of column 12) are:',['in series','connected at that node with both legs tied together (often a wiring mistake)','isolated','in a bridge'],1,'Legs placed in the same strip connect those legs electrically — classic source of “wrong” behaviour.');
+TF('c25',1,'When troubleshooting, change one thing at a time and re-test.',true,'Changing several things at once destroys the information about which fix worked.');
+// c26 strategy
+MC('c26',1,'According to the 2026 Circuit Lab rules, how many calculators may a team use and of what class?',['one, any class','two, Class III','unlimited','none'],1,'Two Class III calculators per the manual.');
+MC('c26',1,'The notes allowance in Circuit Lab (2026) is:',['one 8.5×11 page','a binder/any paper notes of any size and from any source','nothing','a single index card'],1,'Any paper notes of any size, binders allowed.');
+TF('c26',2,'In Circuit Lab, the hands-on part counts 25–50 % of the score.',true,'Written 50–75 %, hands-on 25–50 %.');
+MC('c26',2,'Best use of a two-person team on Circuit Lab is usually:',['both work on the same question','one does the hands-on while the other starts the written test, then swap','one sleeps','skip hands-on'],1,'Parallelise to use the full time.');
+MC('c26',2,'On a multiple-choice question you have no clue about, you should:',['leave it blank','guess (unless the rules penalise guessing)','write “idk”','restart the test'],1,'Rules here award points for correct answers; blanks never score.');
+// t17 heat collection (principles only)
+MC('t17',1,'For a device designed to COLLECT heat from sunlight, the absorbing surface should be:',['shiny white','dark/black with high absorptivity','mirror-like','transparent'],1,'Dark, matte surfaces absorb most of the incident radiation.');
+MC('t17',2,'A glass or clear plastic cover over an absorber mainly helps by:',['adding mass','transmitting short-wavelength sunlight but trapping longer-wavelength infrared and reducing convection (greenhouse effect)','reflecting sunlight away','cooling the absorber'],1,'Glazing passes visible light, blocks IR re-emission, and stops convective loss.');
+MC('t17',2,'The heat stored in a collector’s water tank for a given ΔT is proportional to:',['ΔT only','mass × specific heat × ΔT','mass only','colour'],1,'Q = mcΔT; water’s large c stores a lot of heat.');
+MC('t17',2,'To reduce losses from the back and sides of a solar collector you would use:',['a metal frame','insulation (low-k foam) behind and around the absorber','a thin plastic sheet','nothing'],1,'The same insulation physics as the insulation task applies to everything except the sun-facing side.');
+TF('t17',2,'The exact 2027 device specs for “collect heat” are UNVERIFIED on this site — check the official 2027 rules.',true,'The 2027 PDF is distributed by email form; use the Rules page to record what you learn.');
+MC('t17',3,'Two absorbers get the same sunlight. Absorber A (absorptivity 0.95, emissivity 0.95) and B (absorptivity 0.95, emissivity 0.10, a “selective surface”). Which gets hotter at steady state?',['A','B','same','cannot tell'],1,'B absorbs equally well but radiates much less, so it reaches a higher equilibrium temperature.');
+// t19 lab skills & safety
+MC('t19',1,'To read a liquid-in-glass thermometer correctly, your eye should be:',['above it','level with the liquid column (avoid parallax)','below it','far away'],1,'Parallax error is avoided by reading at eye level.');
+MC('t19',1,'Which PPE is required when handling hot water in Thermodynamics?',['none','eye protection (safety goggles)','a lab apron only','gloves only'],1,'Eye protection is required in both events’ rules; add heat-safe gloves as needed.');
+MC('t19',2,'To measure the temperature of stirred hot water, place the probe:',['touching the bottom of the container','in the middle of the liquid, away from the walls and bottom','above the surface','in the beaker wall'],1,'Walls/bottom can be hotter/cooler than the bulk.');
+MC('t19',2,'Hot water at 75 °C causes serious scalds in roughly:',['seconds','hours','never','days'],0,'Water above ~60 °C can scald in seconds; 75 °C scalds almost instantly.');
+MC('t19',2,'A thermocouple’s advantage over a glass thermometer is:',['cheaper glass','fast response and wide range with small thermal mass','no calibration needed','it measures pressure'],1,'Small junction ⇒ quick response, wide temperature range.');
+TF('t19',2,'Calibrating a thermometer with ice water should read about 0 °C.',true,'Well-stirred ice-water slush is 0 °C (±0.1) — a standard calibration point.');
+// t20 applications
+MC('t20',1,'Why does a refrigerator’s condenser coil on the back feel warm?',['it is broken','it releases heat (the heat removed from inside plus work input) to the room','the food is rotting','it is cooled by the fridge'],1,'Heat pumps move heat; the condenser rejects Q_c + W into the room.');
+MC('t20',2,'Bridges use expansion joints because:',['metal expands when heated and could buckle','metal shrinks when heated','for decoration','water leaks in'],0,'Thermal expansion ΔL = αLΔT.');
+MC('t20',2,'A sea breeze blows from sea to land in the afternoon because:',['land heats faster (lower specific heat), warm air rises over land and cooler air flows in from the sea','the sea is hotter','the moon','wind is random'],0,'Water’s high specific heat keeps it cooler; convection sets up a circulation.');
+MC('t20',2,'Why do double-pane windows filled with argon reduce heat loss?',['argon is hot','a gas layer has low thermal conductivity and, when thin and sealed, little convection','glass is thicker','it reflects sound'],1,'Low-k gas + sealed gap cuts conduction and convection.');
+MC('t20',2,'Insulation R-value: a higher R-value means:',['more heat flow','less heat flow for the same ΔT','higher temperature','faster cooling'],1,'R = L/k; heat flow ∝ 1/R.');
+MC('t20',3,'Which of these is a heat pump running in reverse of an air conditioner?',['a refrigerator','heating a house by moving heat from outside air indoors','a steam engine','a thermos'],1,'A heat pump delivers COP_hp = Q_h/W > 1 by moving heat rather than generating it.');
+// t21 strategy
+MC('t21',1,'Which Division C written-test topics were named (2019) that Division B does not cover?',['radiant exitance, entropy and enthalpy','only plumbing','none','magnetism'],0,'Div C adds radiant exitance, entropy, and enthalpy.');
+MC('t21',1,'In the 2019 scoring, which component is worth the most points?',['device heat score (20)','prediction score (25)','written test (45)','chart score (10)'],2,'Written test TS = 45 of 100.');
+TF('t21',2,'Because the 2027 device changed, every formula from 2019 scoring is guaranteed to apply in 2027.',false,'Unverified — the rubric likely changed. Check the 2027 PDF.');
+MC('t21',2,'The best plan for the written test while a device test runs is:',['wait silently','one partner works the test; do easy, sure points first; second pass for calculations','do only history','leave'],1,'Bank the easy points first, then compute.');
+MC('t21',2,'What should be in a thermodynamics binder?',['only a textbook','tabbed formulas, constants, materials table (k, c, L), worked examples, history timeline, cooling-prediction table','nothing','blank pages'],1,'Organise for speed — tabs, tables, worked examples.');
+MC('t21',3,'A team improves its prediction error from 4 °C to 1 °C (2019 scoring). Points gained:',['2.5','7.5','10','1'],1,'PS = 25 − 2.5×error: 15 → 22.5, a 7.5-point gain.');
+// t22 stat mech / potentials
+MC('t22',2,'Boltzmann’s entropy formula is:',['S = k ln W','S = Q/T²','S = mc ln T','S = PV'],0,'S = k_B ln W (W = number of microstates).');
+MC('t22',2,'The Boltzmann factor for a state of energy E at temperature T is proportional to:',['e^(−E/kT)','E/kT','kT/E','e^(E/kT)'],0,'Probabilities follow e^(−E/kT) — lower-energy states are more probable.');
+MC('t22',2,'The Helmholtz free energy is:',['F = U − TS','F = H − TS','F = U + PV','F = PV − TS'],0,'F = U − TS (constant T, V). Gibbs G = H − TS (constant T, P).');
+MC('t22',2,'The Gibbs free energy G = H − TS is minimised at equilibrium when:',['T and V are constant','T and P are constant','S is constant','Q = 0'],1,'Gibbs is the natural potential at constant temperature and pressure.');
+MC('t22',3,'Enthalpy is defined as:',['H = U + PV','H = U − PV','H = Q/T','H = TS'],0,'H = U + PV; at constant pressure ΔH = Q.');
+TF('t22',3,'Equipartition says each quadratic degree of freedom carries ½kT of energy per molecule on average.',true,'Monatomic gas: 3 translational dof → (3/2)kT.');
+MC('t22',3,'Relating microstates: if a system’s microstate count doubles, its entropy increases by:',['k ln 2','2k','k','ln 2 /k'],0,'ΔS = k ln(2W) − k ln W = k ln 2.');
